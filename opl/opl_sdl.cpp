@@ -22,8 +22,8 @@
 #include <errno.h>
 #include <assert.h>
 
-#include "SDL.hpp"
-#include "SDL_mixer.hpp"
+#include <SDL.h>
+#include <SDL_mixer.h>
 
 #include "opl3.hpp"
 

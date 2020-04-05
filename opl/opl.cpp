@@ -20,7 +20,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "SDL.hpp"
+#include <SDL.h>
 
 #include "opl.hpp"
 #include "opl_internal.hpp"

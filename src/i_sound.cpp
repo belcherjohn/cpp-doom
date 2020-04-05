@@ -18,7 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "SDL_mixer.hpp"
+#include <SDL_mixer.h>
 
 #include "config.hpp"
 #include "doomtype.hpp"

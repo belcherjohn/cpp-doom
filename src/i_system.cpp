@@ -30,7 +30,7 @@
 #include <unistd.h>
 #endif
 
-#include "SDL.hpp"
+#include <SDL.h>
 
 #include "config.hpp"
 

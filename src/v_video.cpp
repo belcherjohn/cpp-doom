@@ -19,7 +19,7 @@
 //	Functions to blit a block to the screen.
 //
 
-#include "SDL_version.hpp" // [crispy]
+#include <SDL_version.h> // [crispy]
 
 #include <stdio.h>
 #include <stdlib.h>
