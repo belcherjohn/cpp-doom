@@ -19,7 +19,7 @@
 #ifndef __D_LOOP__
 #define __D_LOOP__
 
-#include "net_defs.h"
+#include "net_defs.hpp"
 
 // Callback function invoked while waiting for the netgame to start.
 // The callback is invoked when new players are ready. The callback

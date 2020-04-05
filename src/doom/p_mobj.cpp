@@ -18,21 +18,21 @@
 
 #include <stdio.h>
 
-#include "i_system.h"
-#include "z_zone.h"
-#include "m_random.h"
+#include "i_system.hpp"
+#include "z_zone.hpp"
+#include "m_random.hpp"
 
-#include "doomdef.h"
-#include "p_local.h"
-#include "sounds.h"
+#include "doomdef.hpp"
+#include "p_local.hpp"
+#include "sounds.hpp"
 
-#include "st_stuff.h"
-#include "hu_stuff.h"
+#include "st_stuff.hpp"
+#include "hu_stuff.hpp"
 
-#include "s_sound.h"
-#include "s_musinfo.h" // [crispy] S_ParseMusInfo()
+#include "s_sound.hpp"
+#include "s_musinfo.hpp" // [crispy] S_ParseMusInfo()
 
-#include "doomstat.h"
+#include "doomstat.hpp"
 
 
 void G_PlayerReborn (int player);

@@ -15,8 +15,8 @@
 #ifndef SETUP_MODE_H
 #define SETUP_MODE_H
 
-#include "d_mode.h"
-#include "d_iwad.h"
+#include "d_mode.hpp"
+#include "d_iwad.hpp"
 
 typedef void (*GameSelectCallback)(void);
 extern GameMission_t gamemission;

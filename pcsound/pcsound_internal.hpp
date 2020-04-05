@@ -18,7 +18,7 @@
 #ifndef PCSOUND_INTERNAL_H
 #define PCSOUND_INTERNAL_H
 
-#include "pcsound.h"
+#include "pcsound.hpp"
 
 #define PCSOUND_8253_FREQUENCY 1193280
 

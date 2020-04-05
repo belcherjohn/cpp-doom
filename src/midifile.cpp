@@ -20,10 +20,10 @@
 #include <string.h>
 #include <assert.h>
 
-#include "doomtype.h"
-#include "i_swap.h"
-#include "i_system.h"
-#include "midifile.h"
+#include "doomtype.hpp"
+#include "i_swap.hpp"
+#include "i_system.hpp"
+#include "midifile.hpp"
 
 #define HEADER_CHUNK_ID "MThd"
 #define TRACK_CHUNK_ID  "MTrk"

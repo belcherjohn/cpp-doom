@@ -17,13 +17,13 @@
 //	[crispy] Crispness menu
 //
 
-#include "doomstat.h"
-#include "p_local.h" // [crispy] thinkercap
-#include "s_sound.h"
-#include "r_defs.h" // [crispy] laserpatch
-#include "r_sky.h" // [crispy] R_InitSkyMap()
+#include "doomstat.hpp"
+#include "p_local.hpp" // [crispy] thinkercap
+#include "s_sound.hpp"
+#include "r_defs.hpp" // [crispy] laserpatch
+#include "r_sky.hpp" // [crispy] R_InitSkyMap()
 
-#include "m_crispy.h"
+#include "m_crispy.hpp"
 
 multiitem_t multiitem_bobfactor[NUM_BOBFACTORS] =
 {

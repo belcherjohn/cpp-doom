@@ -16,14 +16,14 @@
 
 // R_data.c
 
-#include "doomdef.h"
-#include "deh_str.h"
+#include "doomdef.hpp"
+#include "deh_str.hpp"
 
-#include "i_swap.h"
-#include "i_system.h"
-#include "m_misc.h"
-#include "r_local.h"
-#include "p_local.h"
+#include "i_swap.hpp"
+#include "i_system.hpp"
+#include "m_misc.hpp"
+#include "r_local.hpp"
+#include "p_local.hpp"
 
 extern void CheckAbortStartup(void);
 

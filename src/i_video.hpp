@@ -20,8 +20,8 @@
 #ifndef __I_VIDEO__
 #define __I_VIDEO__
 
-#include "doomtype.h"
-#include "crispy.h"
+#include "doomtype.hpp"
+#include "crispy.hpp"
 
 // Screen width and height.
 

@@ -33,10 +33,10 @@ typedef enum
 // Callback invoked when calibration is completed.
 typedef void (*txt_joystick_axis_callback_t)(void);
 
-#include "txt_widget.h"
-#include "txt_window.h"
+#include "txt_widget.hpp"
+#include "txt_window.hpp"
 
-#include "SDL.h"
+#include "SDL.hpp"
 
 //
 // A joystick axis.

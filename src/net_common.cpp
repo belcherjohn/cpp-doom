@@ -19,16 +19,16 @@
 #include <stdarg.h>
 #include <string.h>
 
-#include "doomtype.h"
-#include "d_mode.h"
-#include "i_system.h"
-#include "i_timer.h"
-#include "m_argv.h"
+#include "doomtype.hpp"
+#include "d_mode.hpp"
+#include "i_system.hpp"
+#include "i_timer.hpp"
+#include "m_argv.hpp"
 
-#include "net_common.h"
-#include "net_io.h"
-#include "net_packet.h"
-#include "net_structrw.h"
+#include "net_common.hpp"
+#include "net_io.hpp"
+#include "net_packet.hpp"
+#include "net_structrw.hpp"
 
 // connections time out after 30 seconds
 

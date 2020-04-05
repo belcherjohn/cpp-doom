@@ -21,7 +21,7 @@
 #define __P_LOCAL__
 
 #ifndef __R_LOCAL__
-#include "r_local.h"
+#include "r_local.hpp"
 #endif
 
 #define FLOATSPEED		(FRACUNIT*5)    // villsa [STRIFE] change to 5 (was 4)
@@ -295,7 +295,7 @@ P_DamageMobj
 //
 // P_SPEC
 //
-#include "p_spec.h"
+#include "p_spec.hpp"
 
 
 #endif	// __P_LOCAL__

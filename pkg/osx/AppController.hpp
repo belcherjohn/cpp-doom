@@ -17,7 +17,7 @@
 
 #include <AppKit/AppKit.h>
 
-#include "LauncherManager.h"
+#include "LauncherManager.hpp"
 
 @interface AppController : NSObject
 {

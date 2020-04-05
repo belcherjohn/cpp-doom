@@ -20,7 +20,7 @@
 #ifndef __I_INPUT__
 #define __I_INPUT__
 
-#include "doomtype.h"
+#include "doomtype.hpp"
 
 #define MAX_MOUSE_BUTTONS 8
 

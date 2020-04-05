@@ -21,9 +21,9 @@
 
 #if _WIN32
 
-#include "SDL_mixer.h"
+#include "SDL_mixer.hpp"
 
-#include "doomtype.h"
+#include "doomtype.hpp"
 
 extern boolean midi_server_initialized;
 extern boolean midi_server_registered;
@@ -39,7 +39,7 @@ boolean I_MidiPipe_InitServer();
 
 #else
 
-#include "doomtype.h"
+#include "doomtype.hpp"
 
 static const boolean midi_server_registered = false;
 

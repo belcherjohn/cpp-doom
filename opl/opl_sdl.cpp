@@ -15,22 +15,22 @@
 //     OPL SDL interface.
 //
 
-#include "config.h"
+#include "config.hpp"
 
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
 #include <assert.h>
 
-#include "SDL.h"
-#include "SDL_mixer.h"
+#include "SDL.hpp"
+#include "SDL_mixer.hpp"
 
-#include "opl3.h"
+#include "opl3.hpp"
 
-#include "opl.h"
-#include "opl_internal.h"
+#include "opl.hpp"
+#include "opl_internal.hpp"
 
-#include "opl_queue.h"
+#include "opl_queue.hpp"
 
 #define MAX_SOUND_SLICE_TIME 100 /* ms */
 

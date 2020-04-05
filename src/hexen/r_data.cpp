@@ -15,12 +15,12 @@
 //
 
 
-#include "h2def.h"
-#include "i_system.h"
-#include "i_swap.h"
-#include "m_misc.h"
-#include "r_local.h"
-#include "p_local.h"
+#include "h2def.hpp"
+#include "i_system.hpp"
+#include "i_swap.hpp"
+#include "m_misc.hpp"
+#include "r_local.hpp"
+#include "p_local.hpp"
 
 typedef struct
 {

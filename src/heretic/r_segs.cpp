@@ -24,9 +24,9 @@
 
 #include <stdlib.h>
 
-#include "doomdef.h"
-#include "i_system.h" // [crispy] I_Realloc()
-#include "r_local.h"
+#include "doomdef.hpp"
+#include "i_system.hpp" // [crispy] I_Realloc()
+#include "r_local.hpp"
 
 // OPTIMIZE: closed two sided lines as single sided
 

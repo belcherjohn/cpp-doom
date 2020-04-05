@@ -21,7 +21,7 @@
 #define __P_LOCAL__
 
 #ifndef __R_LOCAL__
-#include "r_local.h"
+#include "r_local.hpp"
 #endif
 
 #define TOCENTER                -8
@@ -303,7 +303,7 @@ P_DamageMobj
 //
 // P_SPEC
 //
-#include "p_spec.h"
+#include "p_spec.hpp"
 
 
 #endif	// __P_LOCAL__

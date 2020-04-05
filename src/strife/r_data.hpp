@@ -21,9 +21,9 @@
 #ifndef __R_DATA__
 #define __R_DATA__
 
-#include "r_defs.h"
-#include "r_state.h"
-#include "p_spec.h"    // villsa [STRIFE]
+#include "r_defs.hpp"
+#include "r_state.hpp"
+#include "p_spec.hpp"    // villsa [STRIFE]
 
 
 // Retrieve column data for span blitting.

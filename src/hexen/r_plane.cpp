@@ -17,9 +17,9 @@
 
 // HEADER FILES ------------------------------------------------------------
 
-#include "h2def.h"
-#include "i_system.h"
-#include "r_local.h"
+#include "h2def.hpp"
+#include "i_system.hpp"
+#include "r_local.hpp"
 
 // MACROS ------------------------------------------------------------------
 

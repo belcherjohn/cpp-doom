@@ -16,10 +16,10 @@
 //      Timer functions.
 //
 
-#include "SDL.h"
+#include "SDL.hpp"
 
-#include "i_timer.h"
-#include "doomtype.h"
+#include "i_timer.hpp"
+#include "doomtype.hpp"
 
 //
 // I_GetTime

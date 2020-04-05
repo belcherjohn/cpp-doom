@@ -16,17 +16,17 @@
 //	Main program, simply calls D_DoomMain high level loop.
 //
 
-#include "config.h"
-#include "crispy.h"
+#include "config.hpp"
+#include "crispy.hpp"
 
 #include <stdio.h>
 
-#include "SDL.h"
+#include "SDL.hpp"
 
-#include "doomtype.h"
-#include "i_system.h"
-#include "m_argv.h"
-#include "m_misc.h" // [crispy] M_snprintf()
+#include "doomtype.hpp"
+#include "i_system.hpp"
+#include "m_argv.hpp"
+#include "m_misc.hpp" // [crispy] M_snprintf()
 
 //
 // D_DoomMain()

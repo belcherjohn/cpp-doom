@@ -19,9 +19,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "config.h"
-#include "pcsound.h"
-#include "pcsound_internal.h"
+#include "config.hpp"
+#include "pcsound.hpp"
+#include "pcsound_internal.hpp"
 
 
 #ifdef HAVE_DEV_ISA_SPKRIO_H

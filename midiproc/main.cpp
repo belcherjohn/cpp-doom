@@ -31,14 +31,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "SDL.h"
-#include "SDL_mixer.h"
+#include "SDL.hpp"
+#include "SDL_mixer.hpp"
 
-#include "buffer.h"
-#include "proto.h"
+#include "buffer.hpp"
+#include "proto.hpp"
 
-#include "config.h"
-#include "doomtype.h"
+#include "config.hpp"
+#include "doomtype.hpp"
 
 static HANDLE    midi_process_in;  // Standard In.
 static HANDLE    midi_process_out; // Standard Out.

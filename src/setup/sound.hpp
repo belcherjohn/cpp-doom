@@ -15,7 +15,7 @@
 #ifndef SETUP_SOUND_H
 #define SETUP_SOUND_H
 
-#include "i_sound.h"
+#include "i_sound.hpp"
 
 void ConfigSound(void *widget, void *user_data);
 void BindSoundVariables(void);

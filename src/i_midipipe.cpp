@@ -24,13 +24,13 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
-#include "i_midipipe.h"
+#include "i_midipipe.hpp"
 
-#include "config.h"
-#include "i_sound.h"
-#include "i_timer.h"
-#include "m_misc.h"
-#include "net_packet.h"
+#include "config.hpp"
+#include "i_sound.hpp"
+#include "i_timer.hpp"
+#include "m_misc.hpp"
+#include "net_packet.hpp"
 
 #include "../midiproc/proto.h"
 

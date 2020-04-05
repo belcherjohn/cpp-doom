@@ -17,7 +17,7 @@
 
 #ifdef _WIN32
 
-#include "buffer.h"
+#include "buffer.hpp"
 
 #include <stdlib.h>
 

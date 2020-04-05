@@ -22,12 +22,12 @@
 
 
 #include <stdlib.h> // [crispy] abs()
-#include "doomdef.h"
-#include "d_event.h"
+#include "doomdef.hpp"
+#include "d_event.hpp"
 
-#include "p_local.h"
+#include "p_local.hpp"
 
-#include "doomstat.h"
+#include "doomstat.hpp"
 
 
 

@@ -17,7 +17,7 @@
 
 #include <AppKit/AppKit.h>
 #include <AppKit/NSNibLoading.h>
-#include "IWADController.h"
+#include "IWADController.hpp"
 
 @interface LauncherManager : NSObject
 {

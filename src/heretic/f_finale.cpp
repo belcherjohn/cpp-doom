@@ -17,12 +17,12 @@
 
 #include <ctype.h>
 
-#include "doomdef.h"
-#include "deh_str.h"
-#include "i_swap.h"
-#include "i_video.h"
-#include "s_sound.h"
-#include "v_video.h"
+#include "doomdef.hpp"
+#include "deh_str.hpp"
+#include "i_swap.hpp"
+#include "i_video.hpp"
+#include "s_sound.hpp"
+#include "v_video.hpp"
 
 static int finalestage;                // 0 = text, 1 = art screen
 static int finalecount;

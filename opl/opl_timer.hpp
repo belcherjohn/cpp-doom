@@ -18,7 +18,7 @@
 #ifndef OPL_TIMER_H
 #define OPL_TIMER_H
 
-#include "opl.h"
+#include "opl.hpp"
 
 int OPL_Timer_StartThread(void);
 void OPL_Timer_StopThread(void);

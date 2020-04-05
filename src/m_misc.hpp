@@ -23,7 +23,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-#include "doomtype.h"
+#include "doomtype.hpp"
 
 boolean M_WriteFile(const char *name, const void *source, int length);
 int M_ReadFile(const char *name, byte **buffer);

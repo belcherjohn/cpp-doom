@@ -18,8 +18,8 @@
 #ifndef __XDDEFS__
 #define __XDDEFS__
 
-#include "doomtype.h"
-#include "v_patch.h"
+#include "doomtype.hpp"
+#include "v_patch.hpp"
 
 //--------------------------------------------------------------------------
 //

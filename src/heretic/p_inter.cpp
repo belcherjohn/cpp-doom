@@ -16,13 +16,13 @@
 
 // P_inter.c
 
-#include "doomdef.h"
-#include "deh_str.h"
-#include "i_system.h"
-#include "i_timer.h"
-#include "m_random.h"
-#include "p_local.h"
-#include "s_sound.h"
+#include "doomdef.hpp"
+#include "deh_str.hpp"
+#include "i_system.hpp"
+#include "i_timer.hpp"
+#include "m_random.hpp"
+#include "p_local.hpp"
+#include "s_sound.hpp"
 
 #define BONUSADD 6
 
