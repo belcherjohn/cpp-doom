@@ -6,24 +6,24 @@ AM_CFLAGS = @SDL_CFLAGS@                                           \
 noinst_LIBRARIES = libsetup.a
 
 libsetup_a_SOURCES =                            \
-    compatibility.c   compatibility.h           \
-    display.c         display.h                 \
-    joystick.c        joystick.h                \
-    keyboard.c        keyboard.h                \
-    mainmenu.c                                  \
-    mode.c            mode.h                    \
-    mouse.c           mouse.h                   \
-    multiplayer.c     multiplayer.h             \
-    sound.c           sound.h                   \
-    execute.c         execute.h                 \
-    txt_joyaxis.c     txt_joyaxis.h             \
-    txt_joybinput.c   txt_joybinput.h           \
-    txt_keyinput.c    txt_keyinput.h            \
-    txt_mouseinput.c  txt_mouseinput.h
+    compatibility.cpp   compatibility.hpp           \
+    display.cpp         display.hpp                 \
+    joystick.cpp        joystick.hpp                \
+    keyboard.cpp        keyboard.hpp                \
+    mainmenu.cpp                                  \
+    mode.cpp            mode.hpp                    \
+    mouse.cpp           mouse.hpp                   \
+    multiplayer.cpp     multiplayer.hpp             \
+    sound.cpp           sound.hpp                   \
+    execute.cpp         execute.hpp                 \
+    txt_joyaxis.cpp     txt_joyaxis.hpp             \
+    txt_joybinput.cpp   txt_joybinput.hpp           \
+    txt_keyinput.cpp    txt_keyinput.hpp            \
+    txt_mouseinput.cpp  txt_mouseinput.hpp
 
 EXTRA_DIST=                                     \
     CMakeLists.txt                              \
-    setup_icon.c
+    setup_icon.cpp
 
 appdir = $(prefix)/share/applications
 app_DATA = @PACKAGE_RDNS@.Setup.desktop
@@ -35,7 +35,7 @@ CLEANFILES = $(app_DATA)
 
 if HAVE_PYTHON
 
-setup_icon.c : $(top_builddir)/data/setup.png
+setup_icon.cpp : $(top_builddir)/data/setup.png
 	$(top_builddir)/data/convert-icon $(top_builddir)/data/setup.png $@
 
 endif

@@ -8,6 +8,6 @@ if HAVE_WINDRES
 noinst_PROGRAMS = @PROGRAM_PREFIX@midiproc
 
 @PROGRAM_PREFIX@midiproc_LDADD = @SDLMIXER_LIBS@
-@PROGRAM_PREFIX@midiproc_SOURCES = buffer.c buffer.h main.c proto.h
+@PROGRAM_PREFIX@midiproc_SOURCES = buffer.cpp buffer.hpp main.cpp proto.hpp
 
 endif

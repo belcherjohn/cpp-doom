@@ -71,12 +71,12 @@ DOCGEN_COMMON_ARGS = -n "@PROGRAM_SPREFIX@" -s "@PACKAGE_NAME@" -z "@PACKAGE_SHO
 default.cfg.5: $(top_srcdir)/src $(srcdir)/default.cfg.template
 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
                   -g doom -m $(srcdir)/default.cfg.template \
-                  -c default $(top_srcdir)/src/m_config.c > $@
+                  -c default $(top_srcdir)/src/m_config.cpp > $@
 
 @PROGRAM_PREFIX@doom.cfg.5: $(top_srcdir)/src extra.cfg.template
 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
                   -g doom -m $(srcdir)/extra.cfg.template \
-                  -c extended $(top_srcdir)/src/m_config.c > $@
+                  -c extended $(top_srcdir)/src/m_config.cpp > $@
 
 CMDLINE.doom : CMDLINE.template $(top_srcdir)/src $(top_srcdir)/src/doom
 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
@@ -106,12 +106,12 @@ INSTALL.doom: INSTALL.template
 heretic.cfg.5: $(top_srcdir)/src $(srcdir)/default.cfg.template
 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
                  -g heretic -m $(srcdir)/default.cfg.template \
-                  -c default $(top_srcdir)/src/m_config.c > $@
+                  -c default $(top_srcdir)/src/m_config.cpp > $@
 
 @PROGRAM_PREFIX@heretic.cfg.5: $(top_srcdir)/src extra.cfg.template
 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
                  -g heretic -m $(srcdir)/extra.cfg.template \
-                 -c extended $(top_srcdir)/src/m_config.c > $@
+                 -c extended $(top_srcdir)/src/m_config.cpp > $@
 
 CMDLINE.heretic : CMDLINE.template $(top_srcdir)/src $(top_srcdir)/src/heretic
 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
@@ -138,12 +138,12 @@ INSTALL.heretic: INSTALL.template
 hexen.cfg.5: $(top_srcdir)/src default.cfg.template
 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
                  -g hexen -m $(srcdir)/default.cfg.template \
-                 -c default $(top_srcdir)/src/m_config.c > $@
+                 -c default $(top_srcdir)/src/m_config.cpp > $@
 
 @PROGRAM_PREFIX@hexen.cfg.5: $(top_srcdir)/src extra.cfg.template
 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
                  -g hexen -m $(srcdir)/extra.cfg.template \
-                 -c extended $(top_srcdir)/src/m_config.c > $@
+                 -c extended $(top_srcdir)/src/m_config.cpp > $@
 
 CMDLINE.hexen : CMDLINE.template $(top_srcdir)/src $(top_srcdir)/src/hexen
 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
@@ -180,12 +180,12 @@ $(SETUP_MAN_PAGES): $(top_srcdir)/src $(MANPAGE_GEN_FILES)
 strife.cfg.5: $(top_srcdir)/src default.cfg.template
 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
                   -g strife -m $(srcdir)/default.cfg.template \
-                  -c default $(top_srcdir)/src/m_config.c > $@
+                  -c default $(top_srcdir)/src/m_config.cpp > $@
 
 @PROGRAM_PREFIX@strife.cfg.5: $(top_srcdir)/src extra.cfg.template
 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
                   -g strife -m $(srcdir)/extra.cfg.template \
-                  -c extended $(top_srcdir)/src/m_config.c > $@
+                  -c extended $(top_srcdir)/src/m_config.cpp > $@
 
 CMDLINE.strife : CMDLINE.template $(top_srcdir)/src $(top_srcdir)/src/strife
 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \

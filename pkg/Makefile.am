@@ -15,10 +15,10 @@ osx/PkgInfo                                                             \
 osx/cp-with-libs                                                        \
 osx/dmgfix                                                              \
 osx/main.m                                                              \
-osx/AppController.m     osx/AppController.h                             \
-osx/Execute.m           osx/Execute.h                                   \
-osx/IWADController.m    osx/IWADController.h                            \
-osx/LauncherManager.m   osx/LauncherManager.h
+osx/AppController.m     osx/AppController.hpp                             \
+osx/Execute.m           osx/Execute.hpp                                   \
+osx/IWADController.m    osx/IWADController.hpp                            \
+osx/LauncherManager.m   osx/LauncherManager.hpp
 
 WIN32_FILES=                                                            \
 win32/GNUmakefile                                                       \

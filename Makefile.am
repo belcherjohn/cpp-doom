@@ -9,7 +9,7 @@ CMAKE_FILES=                                   \
         cmake/FindSDL2_net.cmake               \
         cmake/Findm.cmake                      \
         cmake/Findsamplerate.cmake             \
-        cmake/config.h.cin
+        cmake/config.hpp.cin
 
 DOC_FILES=                              \
         COPYING.md                      \
@@ -29,8 +29,8 @@ EXTRA_DIST=                             \
         HACKING.md                      \
         TODO.md                         \
         rpm.spec                        \
-        win32/win_opendir.c             \
-        win32/win_opendir.h
+        win32/win_opendir.cpp             \
+        win32/win_opendir.hpp
 
 doomdocsdir = ${docdir}/../${PROGRAM_PREFIX}doom
 doomdocs_DATA = $(DOC_FILES) NOT-BUGS.md
