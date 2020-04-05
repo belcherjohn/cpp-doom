@@ -303,7 +303,7 @@ byte *ST_LoadScreen(void)
 
     lump = W_GetNumForName("STARTUP");
     length = W_LumpLength(lump);
-    buffer = (byte *) Z_Malloc(length, PU_STATIC, NULL);
+    buffer = Z_Malloc<decltype(*byte )>(length, PU_STATIC, NULL);
     W_ReadLump(lump, buffer);
     return (buffer);
 }

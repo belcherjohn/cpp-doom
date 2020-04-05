@@ -1609,6 +1609,6 @@ void ST_Init (void)
     ST_loadData();
 
     // haleyjd 20100919: This is not used by Strife. More memory for voices!
-    //st_backing_screen = (byte *) Z_Malloc(ST_WIDTH * ST_HEIGHT, PU_STATIC, 0);
+    //st_backing_screen = Z_Malloc<decltype(*byte )>(ST_WIDTH * ST_HEIGHT, PU_STATIC, 0);
 }
 

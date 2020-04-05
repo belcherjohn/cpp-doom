@@ -792,7 +792,7 @@ static char *GetGameName(char *gamename)
             // We also need to cut off spaces to get the basic name
 
             gamename_size = strlen(deh_sub) + 10;
-            gamename = Z_Malloc(gamename_size, PU_STATIC, 0);
+            gamename = Z_Malloc<decltype(*gamename)>(gamename_size, PU_STATIC, 0);
             M_snprintf(gamename, gamename_size, deh_sub,
                        STRIFE_VERSION / 100, STRIFE_VERSION % 100);
 
@@ -845,7 +845,7 @@ void D_IdentifyVersion(void)
         {
             char   *iwad     = myargv[p + 1];
             size_t  len      = strlen(iwad) + 1;
-            char   *iwadpath = Z_Malloc(len, PU_STATIC, NULL);
+            char   *iwadpath = Z_Malloc<decltype(*iwadpath)>(len, PU_STATIC, NULL);
             char   *voiceswad;
 
             // extract base path of IWAD parameter

@@ -237,16 +237,16 @@ void Z_Free (void* ptr)
 }
 
 
-
+namespace imp {
 //
-// Z_Malloc
+// Z_Malloc_impl
 // You can pass a NULL user if the tag is < PU_PURGELEVEL.
 //
 #define MINFRAGMENT		64
 
 
 void*
-Z_Malloc
+Z_Malloc_impl
 ( int		size,
   int		tag,
   void*		user )
@@ -359,7 +359,7 @@ Z_Malloc
    
     return result;
 }
-
+}
 
 
 //

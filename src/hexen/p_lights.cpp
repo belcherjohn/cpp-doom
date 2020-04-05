@@ -143,7 +143,7 @@ boolean EV_SpawnLight(line_t * line, byte * arg, lighttype_t type)
         think = false;
         sec = &sectors[secNum];
 
-        light = (light_t *) Z_Malloc(sizeof(light_t), PU_LEVSPEC, 0);
+        light = Z_Malloc<decltype(*light_t )>(sizeof(light_t), PU_LEVSPEC, 0);
         light->type = type;
         light->sector = sec;
         light->count = 0;
@@ -268,7 +268,7 @@ void P_SpawnPhasedLight(sector_t * sector, int base, int index)
 {
     phase_t *phase;
 
-    phase = Z_Malloc(sizeof(*phase), PU_LEVSPEC, 0);
+    phase = Z_Malloc<decltype(*phase)>(sizeof(*phase), PU_LEVSPEC, 0);
     P_AddThinker(&phase->thinker);
     phase->sector = sector;
     if (index == -1)

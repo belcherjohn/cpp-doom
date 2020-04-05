@@ -306,7 +306,7 @@ void M_ReadMisObj(void)
 //
 void *M_Calloc(size_t n1, size_t n2)
 {
-    return (n1 *= n2) ? memset(Z_Malloc(n1, PU_STATIC, NULL), 0, n1) : NULL;
+    return (n1 *= n2) ? memset(Z_Malloc<void>(n1, PU_STATIC, NULL), 0, n1) : NULL;
 }
 
 //

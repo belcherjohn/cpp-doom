@@ -454,7 +454,7 @@ void R_InitTranslationTables (void)
     V_LoadXlaTable();
 
     // villsa [STRIFE] allocate a larger size for translation tables
-    translationtables = Z_Malloc (256*8, PU_STATIC, 0);
+    translationtables = Z_Malloc<decltype(*translationtables)>(256*8, PU_STATIC, 0);
 
     col1 = 0xFA;
     col2 = 0xE0;
@@ -838,7 +838,7 @@ void R_FillBackScreen (void)
 	
     if (background_buffer == NULL)
     {
-        background_buffer = Z_Malloc(SCREENWIDTH * (SCREENHEIGHT - SBARHEIGHT),
+        background_buffer = Z_Malloc<decltype(*background_buffer)>(SCREENWIDTH * (SCREENHEIGHT - SBARHEIGHT),
                                      PU_STATIC, NULL);
     }
 

@@ -159,7 +159,7 @@ void R_InitSpriteDefs(const char **namelist)
     if (!numsprites)
         return;
 
-    sprites = Z_Malloc(numsprites * sizeof(*sprites), PU_STATIC, NULL);
+    sprites = Z_Malloc<decltype(*sprites)>(numsprites * sizeof(*sprites), PU_STATIC, NULL);
 
     start = firstspritelump - 1;
     end = lastspritelump + 1;
@@ -228,8 +228,7 @@ void R_InitSpriteDefs(const char **namelist)
         // allocate space for the frames present and copy sprtemp to it
         //
         sprites[i].numframes = maxframe;
-        sprites[i].spriteframes =
-            Z_Malloc(maxframe * sizeof(spriteframe_t), PU_STATIC, NULL);
+        sprites[i].spriteframes = Z_Malloc<decltype(*sprites[0].spriteframes)>(maxframe * sizeof(spriteframe_t), PU_STATIC, NULL);
         memcpy(sprites[i].spriteframes, sprtemp,
                maxframe * sizeof(spriteframe_t));
     }

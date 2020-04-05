@@ -2626,14 +2626,14 @@ static void UnarchiveMobjs(void)
     mobj_t *mobj;
 
     AssertSegment(ASEG_MOBJS);
-    TargetPlayerAddrs = Z_Malloc(MAX_TARGET_PLAYERS * sizeof(mobj_t **),
+    TargetPlayerAddrs = Z_Malloc<decltype(*TargetPlayerAddrs)>(MAX_TARGET_PLAYERS * sizeof(mobj_t **),
                                  PU_STATIC, NULL);
     TargetPlayerCount = 0;
     MobjCount = SV_ReadLong();
-    MobjList = Z_Malloc(MobjCount * sizeof(mobj_t *), PU_STATIC, NULL);
+    MobjList = Z_Malloc<decltype(*MobjList)>(MobjCount * sizeof(mobj_t *), PU_STATIC, NULL);
     for (i = 0; i < MobjCount; i++)
     {
-        MobjList[i] = Z_Malloc(sizeof(mobj_t), PU_LEVEL, NULL);
+        MobjList[i] = Z_Malloc<decltype(*MobjList[0])>(sizeof(mobj_t), PU_LEVEL, NULL);
     }
     for (i = 0; i < MobjCount; i++)
     {
@@ -2858,7 +2858,7 @@ static void UnarchiveThinkers(void)
         {
             if (tClass == info->tClass)
             {
-                thinker = Z_Malloc(info->size, PU_LEVEL, NULL);
+                thinker = Z_Malloc<decltype(*thinker)>(info->size, PU_LEVEL, NULL);
                 info->readFunc(thinker);
                 thinker->function = info->thinkerFunc;
                 if (info->restoreFunc)
@@ -3277,7 +3277,7 @@ static void CopyFile(char *source_name, char *dest_name)
 
     if (vanilla_savegame_limit)
     {
-        buffer = Z_Malloc(file_length, PU_STATIC, NULL);
+        buffer = Z_Malloc<decltype(*buffer)>(file_length, PU_STATIC, NULL);
         Z_Free(buffer);
     }
 
@@ -3287,7 +3287,7 @@ static void CopyFile(char *source_name, char *dest_name)
         I_Error ("Couldn't read file %s", dest_name);
     }
 
-    buffer = Z_Malloc (BUFFER_CHUNK_SIZE, PU_STATIC, NULL);
+    buffer = Z_Malloc<decltype(*buffer)>(BUFFER_CHUNK_SIZE, PU_STATIC, NULL);
 
     do
     {

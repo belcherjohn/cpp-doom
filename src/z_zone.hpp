@@ -25,6 +25,7 @@
 #define __Z_ZONE__
 
 #include <stdio.h>
+#include <type_traits>
 
 //
 // ZONE MEMORY
@@ -50,8 +51,14 @@ enum
 };
         
 
+namespace impl {
+    void* Z_Malloc_impl(int size, int tag, void* ptr);
+}
+
 void	Z_Init (void);
-void*	Z_Malloc (int size, int tag, void *ptr);
+
+template<class T>
+std::decay_t<T>* Z_Malloc(int size, int tag, void* user) { return reinterpret_cast<std::decay_t<T>*>(impl::Z_Malloc_impl(size, tag, user)); }
 void    Z_Free (void *ptr);
 void    Z_FreeTags (int lowtag, int hightag);
 void    Z_DumpHeap (int lowtag, int hightag);

@@ -1717,12 +1717,12 @@ void WI_loadData(void)
     if (gamemode == commercial)
     {
 	NUMCMAPS = 32;
-	lnames = (patch_t **) Z_Malloc(sizeof(patch_t*) * NUMCMAPS,
+	lnames = Z_Malloc<decltype(*patch_t *)>(sizeof(patch_t*) * NUMCMAPS,
 				       PU_STATIC, NULL);
     }
     else
     {
-	lnames = (patch_t **) Z_Malloc(sizeof(patch_t*) * NUMMAPS,
+	lnames = Z_Malloc<decltype(*patch_t *)>(sizeof(patch_t*) * NUMMAPS,
 				       PU_STATIC, NULL);
     }
 

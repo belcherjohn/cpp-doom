@@ -244,9 +244,9 @@ static void InitializeFade(boolean fadeIn)
 {
     unsigned i;
 
-    Palette = Z_Malloc(768 * sizeof(fixed_t), PU_STATIC, 0);
-    PaletteDelta = Z_Malloc(768 * sizeof(fixed_t), PU_STATIC, 0);
-    RealPalette = Z_Malloc(768 * sizeof(byte), PU_STATIC, 0);
+    Palette = Z_Malloc<decltype(*Palette)>(768 * sizeof(fixed_t), PU_STATIC, 0);
+    PaletteDelta = Z_Malloc<decltype(*PaletteDelta)>(768 * sizeof(fixed_t), PU_STATIC, 0);
+    RealPalette = Z_Malloc<decltype(*RealPalette)>(768 * sizeof(byte), PU_STATIC, 0);
 
     if (fadeIn)
     {
