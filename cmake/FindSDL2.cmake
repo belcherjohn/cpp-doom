@@ -84,8 +84,8 @@ find_package_handle_standard_args(SDL2
 
 if(SDL2_FOUND)
     # SDL2 imported target.
-    add_library(SDL2::SDL2 UNKNOWN IMPORTED)
-    set_target_properties(SDL2::SDL2 PROPERTIES
+    add_library(SDL2::SDL2 SDL2::SDL2main UNKNOWN IMPORTED)
+    set_target_properties(SDL2::SDL2 SDL2::SDL2main PROPERTIES
                           INTERFACE_COMPILE_OPTIONS "${PC_SDL2_CFLAGS_OTHER}"
                           INTERFACE_INCLUDE_DIRECTORIES "${SDL2_INCLUDE_DIR}"
                           IMPORTED_LOCATION "${SDL2_LIBRARY}")

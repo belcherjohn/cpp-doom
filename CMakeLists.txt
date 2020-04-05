@@ -28,9 +28,9 @@ else()
                         "-Wredundant-decls")
 endif()
 
-find_package(SDL2 2.0.1)
-find_package(SDL2_mixer 2.0.0)
-find_package(SDL2_net 2.0.0)
+find_package(SDL2 CONFIG REQUIRED)
+find_package(sdl2-mixer CONFIG REQUIRED)
+find_package(sdl2-net CONFIG REQUIRED)
 
 # Check for libsamplerate.
 find_package(samplerate)
