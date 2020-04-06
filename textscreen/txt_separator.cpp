@@ -21,6 +21,7 @@
 #include "txt_main.hpp"
 #include "txt_utf8.hpp"
 #include "txt_window.hpp"
+#include "..\utils\memory.hpp"
 
 static void TXT_SeparatorSizeCalc(TXT_UNCAST_ARG(separator))
 {
@@ -102,7 +103,7 @@ txt_separator_t *TXT_NewSeparator(const char *label)
 {
     txt_separator_t *separator;
 
-    separator = malloc(sizeof(txt_separator_t));
+    separator = new_struct<txt_separator_t>();
 
     TXT_InitWidget(separator, &txt_separator_class);
 

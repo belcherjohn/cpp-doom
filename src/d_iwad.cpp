@@ -30,6 +30,7 @@
 #include "m_misc.hpp"
 #include "w_wad.hpp"
 #include "z_zone.hpp"
+#include "..\utils\memory.hpp"
 
 static const iwad_t iwads[] =
 {
@@ -895,7 +896,7 @@ const iwad_t **D_FindAllIWADs(int mask)
     char *filename;
     int i;
 
-    result = malloc(sizeof(iwad_t *) * (arrlen(iwads) + 1));
+    result = new_struct<decltype(*result)>((arrlen(iwads) + 1));
     result_len = 0;
 
     // Try to find all IWADs

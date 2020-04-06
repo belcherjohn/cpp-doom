@@ -25,6 +25,7 @@
 #include "txt_main.hpp"
 #include "txt_utf8.hpp"
 #include "txt_window.hpp"
+#include "..\utils\memory.hpp"
 
 extern txt_widget_class_t txt_inputbox_class;
 extern txt_widget_class_t txt_int_inputbox_class;
@@ -320,7 +321,7 @@ static txt_inputbox_t *NewInputBox(txt_widget_class_t *widget_class,
 {
     txt_inputbox_t *inputbox;
 
-    inputbox = malloc(sizeof(txt_inputbox_t));
+    inputbox = new_struct<txt_inputbox_t>();
 
     TXT_InitWidget(inputbox, widget_class);
     inputbox->value = value;

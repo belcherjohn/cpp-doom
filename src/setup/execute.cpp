@@ -44,6 +44,7 @@
 #include "m_argv.hpp"
 #include "m_config.hpp"
 #include "m_misc.hpp"
+#include "..\utils\memory.hpp"
 
 struct execute_context_s
 {
@@ -116,7 +117,7 @@ execute_context_t *NewExecuteContext(void)
 {
     execute_context_t *result;
 
-    result = malloc(sizeof(execute_context_t));
+    result = new_struct<execute_context_t>();
     
     result->response_file = TempFile("chocolat.rsp");
     result->stream = fopen(result->response_file, "w");

@@ -19,6 +19,7 @@
 #include "txt_io.hpp"
 #include "txt_main.hpp"
 #include "txt_utf8.hpp"
+#include "..\utils\memory.hpp"
 
 typedef struct txt_cliparea_s txt_cliparea_t;
 
@@ -420,7 +421,7 @@ void TXT_InitClipArea(void)
 {
     if (cliparea == NULL)
     {
-        cliparea = malloc(sizeof(txt_cliparea_t));
+        cliparea = new_struct<txt_cliparea_t>();
         cliparea->x1 = 0;
         cliparea->x2 = TXT_SCREEN_W;
         cliparea->y1 = 0;
@@ -433,7 +434,7 @@ void TXT_PushClipArea(int x1, int x2, int y1, int y2)
 {
     txt_cliparea_t *newarea;
 
-    newarea = malloc(sizeof(txt_cliparea_t));
+    newarea = new_struct<txt_cliparea_t>();
 
     // Set the new clip area to the intersection of the old
     // area and the new one.

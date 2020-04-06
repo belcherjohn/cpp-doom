@@ -23,6 +23,7 @@
 #include "i_glob.hpp"
 #include "m_misc.hpp"
 #include "config.hpp"
+#include "..\utils\memory.hpp"
 
 #if defined(_MSC_VER)
 // For Visual C++, we need to include the win_opendir module.
@@ -134,7 +135,7 @@ glob_t *I_StartMultiGlob(const char *directory, int flags,
     }
     va_end(args);
 
-    result = malloc(sizeof(glob_t));
+    result = new_struct<glob_t>();
     if (result == NULL)
     {
         FreeStringList(globs, num_globs);

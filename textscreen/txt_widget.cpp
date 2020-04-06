@@ -19,6 +19,7 @@
 #include "txt_widget.hpp"
 #include "txt_gui.hpp"
 #include "txt_desktop.hpp"
+#include "..\utils\memory.hpp"
 
 typedef struct
 {
@@ -38,7 +39,7 @@ txt_callback_table_t *TXT_NewCallbackTable(void)
 {
     txt_callback_table_t *table;
 
-    table = malloc(sizeof(txt_callback_table_t));
+    table = new_struct<txt_callback_table_t>();
     table->callbacks = NULL;
     table->num_callbacks = 0;
     table->refcount = 1;

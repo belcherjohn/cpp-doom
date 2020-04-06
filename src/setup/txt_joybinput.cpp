@@ -32,6 +32,7 @@
 #include "txt_sdl.hpp"
 #include "txt_utf8.hpp"
 #include "txt_window.hpp"
+#include "..\utils\memory.hpp"
 
 #define JOYSTICK_INPUT_WIDTH 10
 
@@ -326,7 +327,7 @@ txt_joystick_input_t *TXT_NewJoystickInput(int *variable)
 {
     txt_joystick_input_t *joystick_input;
 
-    joystick_input = malloc(sizeof(txt_joystick_input_t));
+    joystick_input = new_struct<txt_joystick_input_t>();
 
     TXT_InitWidget(joystick_input, &txt_joystick_input_class);
     joystick_input->variable = variable;

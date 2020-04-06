@@ -47,6 +47,7 @@
 #include "v_video.hpp"
 #include "w_wad.hpp"
 #include "z_zone.hpp"
+#include "..\utils\memory.hpp"
 
 //
 // Create a directory
@@ -650,7 +651,7 @@ char *M_OEMToUTF8(const char *oem)
     wchar_t *tmp;
     char *result;
 
-    tmp = malloc(len * sizeof(wchar_t));
+    tmp = new_struct<wchar_t>(len );
     MultiByteToWideChar(CP_OEMCP, 0, oem, len, tmp, len);
     result = malloc(len * 4);
     WideCharToMultiByte(CP_UTF8, 0, tmp, len, result, len * 4, NULL, NULL);

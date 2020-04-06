@@ -24,6 +24,7 @@
 #include "i_swap.hpp"
 #include "i_system.hpp"
 #include "midifile.hpp"
+#include "..\utils\memory.hpp"
 
 #define HEADER_CHUNK_ID "MThd"
 #define TRACK_CHUNK_ID  "MTrk"
@@ -503,7 +504,7 @@ static boolean ReadAllTracks(midi_file_t *file, FILE *stream)
 
     // Allocate list of tracks and read each track:
 
-    file->tracks = malloc(sizeof(midi_track_t) * file->num_tracks);
+    file->tracks = new_struct<midi_track_t>(file->num_tracks);
 
     if (file->tracks == NULL)
     {
@@ -584,7 +585,7 @@ midi_file_t *MIDI_LoadFile(char *filename)
     midi_file_t *file;
     FILE *stream;
 
-    file = malloc(sizeof(midi_file_t));
+    file = new_struct<midi_file_t>();
 
     if (file == NULL)
     {

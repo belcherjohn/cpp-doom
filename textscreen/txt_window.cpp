@@ -32,6 +32,7 @@
 #include <windows.h>
 #include <shellapi.h>
 #endif
+#include "..\utils\memory.hpp"
 
 void TXT_SetWindowAction(txt_window_t *window,
                          txt_horiz_align_t position, 
@@ -60,7 +61,7 @@ txt_window_t *TXT_NewWindow(const char *title)
 
     txt_window_t *win;
 
-    win = malloc(sizeof(txt_window_t));
+    win = new_struct<txt_window_t>();
 
     TXT_InitTable(&win->table, 1);
 

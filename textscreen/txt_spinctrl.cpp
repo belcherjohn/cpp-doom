@@ -26,6 +26,7 @@
 #include "txt_main.hpp"
 #include "txt_utf8.hpp"
 #include "txt_window.hpp"
+#include "..\utils\memory.hpp"
 
 // Generate the format string to be used for displaying floats
 
@@ -383,7 +384,7 @@ static txt_spincontrol_t *TXT_BaseSpinControl(void)
 {
     txt_spincontrol_t *spincontrol;
 
-    spincontrol = malloc(sizeof(txt_spincontrol_t));
+    spincontrol = new_struct<txt_spincontrol_t>();
 
     TXT_InitWidget(spincontrol, &txt_spincontrol_class);
     spincontrol->buffer_len = 25;

@@ -28,6 +28,7 @@
 #include "i_system.hpp"
 #include "m_misc.hpp"
 #include "m_argv.hpp"  // haleyjd 20110212: warning fix
+#include "..\utils\memory.hpp"
 
 int		myargc;
 char**		myargv;
@@ -338,7 +339,7 @@ void M_AddLooseFiles(void)
 
     // allocate space for up to three additional regular parameters
 
-    arguments = malloc((myargc + 3) * sizeof(*arguments));
+    arguments = new_struct<decltype(*arguments)>((myargc + 3) );
     memset(arguments, 0, (myargc + 3) * sizeof(*arguments));
 
     // check the command line and make sure it does not already
@@ -390,7 +391,7 @@ void M_AddLooseFiles(void)
         myargc++;
     }
 
-    newargv = malloc(myargc * sizeof(*newargv));
+    newargv = new_struct<decltype(*newargv)>(myargc );
 
     // sort the argument list by file type, except for the zeroth argument
     // which is the executable invocation itself

@@ -38,6 +38,7 @@
 #include "r_local.hpp"
 #include "r_sky.hpp"
 #include "st_stuff.hpp" // [crispy] ST_refreshBackground()
+#include "..\utils\memory.hpp"
 
 
 
@@ -737,15 +738,15 @@ void R_InitLightTables (void)
 	LIGHTZSHIFT = 20;
     }
 
-    scalelight = malloc(LIGHTLEVELS * sizeof(*scalelight));
-    scalelightfixed = malloc(MAXLIGHTSCALE * sizeof(*scalelightfixed));
-    zlight = malloc(LIGHTLEVELS * sizeof(*zlight));
+    scalelight = new_struct<decltype(*scalelight)>(LIGHTLEVELS );
+    scalelightfixed = new_struct<decltype(*scalelightfixed)>(MAXLIGHTSCALE );
+    zlight = new_struct<decltype(*zlight)>(LIGHTLEVELS );
 
     // Calculate the light levels to use
     //  for each level / distance combination.
     for (i=0 ; i< LIGHTLEVELS ; i++)
     {
-	zlight[i] = malloc(MAXLIGHTZ * sizeof(**zlight));
+	zlight[i] = new_struct<decltype(**zlight)>(MAXLIGHTZ );
 
 	startmap = ((LIGHTLEVELS-LIGHTBRIGHT-i)*2)*NUMCOLORMAPS/LIGHTLEVELS;
 	for (j=0 ; j<MAXLIGHTZ ; j++)
@@ -893,7 +894,7 @@ void R_ExecuteSetViewSize (void)
     //  for each level / scale combination.
     for (i=0 ; i< LIGHTLEVELS ; i++)
     {
-	scalelight[i] = malloc(MAXLIGHTSCALE * sizeof(**scalelight));
+	scalelight[i] = new_struct<decltype(**scalelight)>(MAXLIGHTSCALE );
 
 	startmap = ((LIGHTLEVELS-LIGHTBRIGHT-i)*2)*NUMCOLORMAPS/LIGHTLEVELS;
 	for (j=0 ; j<MAXLIGHTSCALE ; j++)

@@ -24,6 +24,7 @@
 #include "txt_main.hpp"
 #include "txt_utf8.hpp"
 #include "txt_window.hpp"
+#include "..\utils\memory.hpp"
 
 static void TXT_WindowActionSizeCalc(TXT_UNCAST_ARG(action))
 {
@@ -110,7 +111,7 @@ txt_window_action_t *TXT_NewWindowAction(int key, const char *label)
 {
     txt_window_action_t *action;
 
-    action = malloc(sizeof(txt_window_action_t));
+    action = new_struct<txt_window_action_t>();
 
     TXT_InitWidget(action, &txt_window_action_class);
     action->key = key;

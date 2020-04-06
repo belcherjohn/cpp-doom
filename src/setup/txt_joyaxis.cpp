@@ -29,6 +29,7 @@
 #include "txt_io.hpp"
 #include "txt_joyaxis.hpp"
 #include "txt_utf8.hpp"
+#include "..\utils\memory.hpp"
 
 #define JOYSTICK_AXIS_WIDTH 20
 
@@ -518,7 +519,7 @@ txt_joystick_axis_t *TXT_NewJoystickAxis(int *axis, int *invert,
 {
     txt_joystick_axis_t *joystick_axis;
 
-    joystick_axis = malloc(sizeof(txt_joystick_axis_t));
+    joystick_axis = new_struct<txt_joystick_axis_t>();
 
     TXT_InitWidget(joystick_axis, &txt_joystick_axis_class);
     joystick_axis->axis = axis;

@@ -34,6 +34,7 @@
 #include "net_query.hpp"
 
 #include "net_petname.hpp"
+#include "..\utils\memory.hpp"
 
 #define MULTI_START_HELP_URL "https://www.chocolate-doom.org/setup-multi-start"
 #define MULTI_JOIN_HELP_URL "https://www.chocolate-doom.org/setup-multi-join"
@@ -570,7 +571,7 @@ static txt_widget_t *IWADSelector(void)
          ++num_iwads;
     }
 
-    iwad_labels = malloc(sizeof(*iwad_labels) * num_iwads);
+    iwad_labels = new_struct<decltype(*iwad_labels)>(num_iwads);
 
     for (i=0; i < num_iwads; ++i)
     {

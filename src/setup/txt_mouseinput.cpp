@@ -25,6 +25,7 @@
 #include "txt_label.hpp"
 #include "txt_utf8.hpp"
 #include "txt_window.hpp"
+#include "..\utils\memory.hpp"
 
 // eg. "BUTTON #10"
 #define MOUSE_INPUT_WIDTH 10
@@ -168,7 +169,7 @@ txt_mouse_input_t *TXT_NewMouseInput(int *variable)
 {
     txt_mouse_input_t *mouse_input;
 
-    mouse_input = malloc(sizeof(txt_mouse_input_t));
+    mouse_input = new_struct<txt_mouse_input_t>();
 
     TXT_InitWidget(mouse_input, &txt_mouse_input_class);
     mouse_input->variable = variable;

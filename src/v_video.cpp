@@ -48,6 +48,7 @@
 #ifdef HAVE_LIBPNG
 #include <png.h>
 #endif
+#include "..\utils\memory.hpp"
 
 // TODO: There are separate RANGECHECK defines for different games, but this
 // is common code. Fix this.
@@ -1053,7 +1054,7 @@ void WritePNGfile(char *filename, pixel_t *data,
                  8, PNG_COLOR_TYPE_PALETTE, PNG_INTERLACE_NONE,
                  PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
 
-    pcolor = malloc(sizeof(*pcolor) * 256);
+    pcolor = new_struct<decltype(*pcolor)>(256);
     if (!pcolor)
     {
         fclose(handle);

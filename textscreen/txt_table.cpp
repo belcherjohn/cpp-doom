@@ -25,6 +25,7 @@
 #include "txt_separator.hpp"
 #include "txt_strut.hpp"
 #include "txt_table.hpp"
+#include "..\utils\memory.hpp"
 
 txt_widget_t txt_table_overflow_right;
 txt_widget_t txt_table_overflow_down;
@@ -256,8 +257,8 @@ static void TXT_CalcTableSize(TXT_UNCAST_ARG(table))
 
     rows = TableRows(table);
 
-    row_heights = malloc(sizeof(int) * rows);
-    column_widths = malloc(sizeof(int) * table->columns);
+    row_heights = new_struct<int>(rows);
+    column_widths = new_struct<int>(table->columns);
 
     CalcRowColSizes(table, row_heights, column_widths);
 
@@ -699,8 +700,8 @@ static void TXT_TableLayout(TXT_UNCAST_ARG(table))
 
     rows = TableRows(table);
 
-    column_widths = malloc(sizeof(int) * table->columns);
-    row_heights = malloc(sizeof(int) * rows);
+    column_widths = new_struct<int>(table->columns);
+    row_heights = new_struct<int>(rows);
 
     CalcRowColSizes(table, row_heights, column_widths);
 
@@ -899,7 +900,7 @@ txt_table_t *TXT_NewTable(int columns)
 {
     txt_table_t *table;
 
-    table = malloc(sizeof(txt_table_t));
+    table = new_struct<txt_table_t>();
 
     TXT_InitTable(table, columns);
 
@@ -1174,8 +1175,8 @@ int TXT_PageTable(TXT_UNCAST_ARG(table), int pagex, int pagey)
 
     rows = TableRows(table);
 
-    row_heights = malloc(sizeof(int) * rows);
-    column_widths = malloc(sizeof(int) * table->columns);
+    row_heights = new_struct<int>(rows);
+    column_widths = new_struct<int>(table->columns);
 
     CalcRowColSizes(table, row_heights, column_widths);
 

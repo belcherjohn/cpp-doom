@@ -48,6 +48,7 @@
 
 #include "w_wad.hpp"
 #include "z_zone.hpp"
+#include "..\utils\memory.hpp"
 
 #define DEFAULT_RAM 16*2 /* MiB [crispy] */
 #define MIN_RAM     4*4  /* MiB [crispy] */
@@ -68,7 +69,7 @@ void I_AtExit(atexit_func_t func, boolean run_on_error)
 {
     atexit_listentry_t *entry;
 
-    entry = malloc(sizeof(*entry));
+    entry = new_struct<decltype(*entry)>();
 
     entry->func = func;
     entry->run_on_error = run_on_error;

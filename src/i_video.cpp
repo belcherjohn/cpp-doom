@@ -48,6 +48,7 @@
 #include "v_video.hpp"
 #include "w_wad.hpp"
 #include "z_zone.hpp"
+#include "..\utils\memory.hpp"
 
 int SCREENWIDTH, SCREENHEIGHT, SCREENHEIGHT_4_3;
 int HIRESWIDTH; // [crispy] non-widescreen SCREENWIDTH
@@ -900,7 +901,7 @@ void I_SetGammaTable (void)
 {
 	int i;
 
-	gamma2table = malloc(9 * sizeof(*gamma2table));
+	gamma2table = new_struct<decltype(*gamma2table)>(9 );
 
 	// [crispy] 5 original gamma levels
 	for (i = 0; i < 5; i++)
@@ -913,7 +914,7 @@ void I_SetGammaTable (void)
 	{
 		int j;
 
-		gamma2table[2*i+1] = malloc(256 * sizeof(**gamma2table));
+		gamma2table[2*i+1] = new_struct<decltype(**gamma2table)>(256 );
 
 		for (j = 0; j < 256; j++)
 		{

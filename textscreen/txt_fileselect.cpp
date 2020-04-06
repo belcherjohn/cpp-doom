@@ -27,6 +27,7 @@
 #include "txt_io.hpp"
 #include "txt_main.hpp"
 #include "txt_widget.hpp"
+#include "..\utils\memory.hpp"
 
 struct txt_fileselect_s {
     txt_widget_t widget;
@@ -819,7 +820,7 @@ txt_fileselect_t *TXT_NewFileSelector(char **variable, int size,
 {
     txt_fileselect_t *fileselect;
 
-    fileselect = malloc(sizeof(txt_fileselect_t));
+    fileselect = new_struct<txt_fileselect_t>();
     TXT_InitWidget(fileselect, &txt_fileselect_class);
     fileselect->inputbox = TXT_NewInputBox(variable, 1024);
     fileselect->inputbox->widget.parent = &fileselect->widget;
