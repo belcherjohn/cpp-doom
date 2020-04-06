@@ -104,7 +104,7 @@ static void LoadResponseFile(int argv_index, const char *filename)
     // at the end of the response file, in which case a '\0' will be
     // needed.
 
-    file = malloc(size + 1);
+    file = new_struct<char>(size + 1);
 
     i = 0;
 
@@ -124,7 +124,7 @@ static void LoadResponseFile(int argv_index, const char *filename)
 
     // Create new arguments list array
 
-    newargv = malloc(sizeof(char *) * MAXARGVS);
+    newargv = new_struct<char*>(MAXARGVS);
     newargc = 0;
     memset(newargv, 0, sizeof(char *) * MAXARGVS);
 

@@ -165,7 +165,7 @@ static boolean ReadVariableLength(unsigned int *result, FILE *stream)
 
 // Read a byte sequence into the data buffer.
 
-static void *ReadByteSequence(unsigned int num_bytes, FILE *stream)
+static byte *ReadByteSequence(unsigned int num_bytes, FILE *stream)
 {
     unsigned int i;
     byte *result;
@@ -173,7 +173,7 @@ static void *ReadByteSequence(unsigned int num_bytes, FILE *stream)
     // Allocate a buffer. Allocate one extra byte, as malloc(0) is
     // non-portable.
 
-    result = malloc(num_bytes + 1);
+    result = new_struct<byte>(num_bytes + 1);
 
     if (result == NULL)
     {
@@ -209,8 +209,8 @@ static boolean ReadChannelEvent(midi_event_t *event,
 
     // Set basics:
 
-    event->event_type = event_type & 0xf0;
-    event->data.channel.channel = event_type & 0x0f;
+    event->event_type = static_cast<midi_event_type_t>(event_type & 0xf0u);
+    event->data.channel.channel = event_type & 0x0fu;
 
     // Read parameters:
 
@@ -245,7 +245,7 @@ static boolean ReadChannelEvent(midi_event_t *event,
 static boolean ReadSysExEvent(midi_event_t *event, int event_type,
                               FILE *stream)
 {
-    event->event_type = event_type;
+    event->event_type = static_cast<midi_event_type_t>(event_type);
 
     if (!ReadVariableLength(&event->data.sysex.length, stream))
     {
@@ -458,8 +458,8 @@ static boolean ReadTrack(midi_track_t *track, FILE *stream)
     {
         // Resize the track slightly larger to hold another event:
 
-        new_events = I_Realloc(track->events, 
-                             sizeof(midi_event_t) * (track->num_events + 1));
+        new_events = reinterpret_cast<midi_event_t*>(I_Realloc(track->events,
+                             sizeof(midi_event_t) * (track->num_events + 1)));
         track->events = new_events;
 
         // Read the next event:
@@ -646,7 +646,7 @@ midi_track_iter_t *MIDI_IterateTrack(midi_file_t *file, unsigned int track)
 
     assert(track < file->num_tracks);
 
-    iter = malloc(sizeof(*iter));
+    iter = new_struct<midi_track_iter_t>(sizeof(*iter));
     iter->track = &file->tracks[track];
     iter->position = 0;
 

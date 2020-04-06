@@ -400,7 +400,7 @@ static boolean ConvertMus(byte *musdata, int len, const char *filename)
     return result;
 }
 
-static void *I_SDL_RegisterSong(void *data, int len)
+static void *I_SDL_RegisterSong(byte *data, int len)
 {
     char *filename;
     Mix_Music *music;

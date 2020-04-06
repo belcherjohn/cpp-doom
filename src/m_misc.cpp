@@ -272,16 +272,14 @@ boolean M_StrToInt(const char *str, int *result)
 // and must be freed by the caller after use.
 char *M_DirName(const char *path)
 {
-    char *p, *result;
-
-    p = strrchr(path, DIR_SEPARATOR);
+    const auto p = strrchr(path, DIR_SEPARATOR);
     if (p == NULL)
     {
         return M_StringDuplicate(".");
     }
     else
     {
-        result = M_StringDuplicate(path);
+        const auto result = M_StringDuplicate(path);
         result[p - path] = '\0';
         return result;
     }
@@ -463,7 +461,7 @@ char *M_StringReplace(const char *haystack, const char *needle,
 
     // Construct new string.
 
-    result = malloc(result_len);
+    result = new_struct<char>(result_len);
     if (result == NULL)
     {
         I_Error("M_StringReplace: Failed to allocate new string");
@@ -573,7 +571,7 @@ char *M_StringJoin(const char *s, ...)
     }
     va_end(args);
 
-    result = malloc(result_len);
+    result = new_struct<char>(result_len);
 
     if (result == NULL)
     {
@@ -653,7 +651,7 @@ char *M_OEMToUTF8(const char *oem)
 
     tmp = new_struct<wchar_t>(len );
     MultiByteToWideChar(CP_OEMCP, 0, oem, len, tmp, len);
-    result = malloc(len * 4);
+    result = new_struct<char>(len * 4);
     WideCharToMultiByte(CP_UTF8, 0, tmp, len, result, len * 4, NULL, NULL);
     free(tmp);
 

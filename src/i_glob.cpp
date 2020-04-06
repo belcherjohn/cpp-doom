@@ -27,7 +27,7 @@
 
 #if defined(_MSC_VER)
 // For Visual C++, we need to include the win_opendir module.
-#include <win_opendir.h>
+#include <win_opendir.hpp>
 #include <sys/stat.h>
 #define S_ISDIR(m)      (((m)& S_IFMT) == S_IFDIR)
 #elif defined(HAVE_DIRENT_H)
@@ -105,7 +105,7 @@ glob_t *I_StartMultiGlob(const char *directory, int flags,
     glob_t *result;
     va_list args;
 
-    globs = malloc(sizeof(char *));
+    globs = new_struct<char*>();
     if (globs == NULL)
     {
         return NULL;
@@ -124,7 +124,7 @@ glob_t *I_StartMultiGlob(const char *directory, int flags,
             break;
         }
 
-        new_globs = realloc(globs, sizeof(char *) * (num_globs + 1));
+        new_globs = reinterpret_cast<decltype(globs)>(realloc(globs, sizeof(char *) * (num_globs + 1)));
         if (new_globs == NULL)
         {
             FreeStringList(globs, num_globs);
@@ -274,8 +274,8 @@ static void ReadAllFilenames(glob_t *glob)
         {
             break;
         }
-        glob->filenames = realloc(glob->filenames,
-                                  (glob->filenames_len + 1) * sizeof(char *));
+        glob->filenames = reinterpret_cast<decltype(glob->filenames)>(realloc(glob->filenames,
+                                  (glob->filenames_len + 1) * sizeof(char *)));
         glob->filenames[glob->filenames_len] = name;
         ++glob->filenames_len;
     }

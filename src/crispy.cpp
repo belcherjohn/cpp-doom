@@ -21,15 +21,16 @@
 #include "crispy.hpp"
 
 // [crispy] "regular" config variables
-static crispy_t crispy_s = {
-	0,
-	.extautomap = 1,
-	.extsaveg = 1,
-	.hires = 1,
-	.smoothscaling = 1,
-	.soundfix = 1,
-	.vsync = 1,
-};
+static crispy_t crispy_s = []{
+	crispy_t c = {};
+	c.extautomap = 1;
+	c.extsaveg = 1;
+	c.hires = 1;
+	c.smoothscaling = 1;
+	c.soundfix = 1;
+	c.vsync = 1;
+	return c;
+}();
 crispy_t *const crispy = &crispy_s;
 
 // [crispy] "critical" config variables

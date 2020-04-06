@@ -664,13 +664,11 @@ net_protocol_t NET_ReadProtocolList(net_packet_t *packet)
 // protocols is always sent.
 void NET_WriteProtocolList(net_packet_t *packet)
 {
-    int i;
-
     NET_WriteInt8(packet, NET_NUM_PROTOCOLS);
 
-    for (i = 0; i < NET_NUM_PROTOCOLS; ++i)
+    for (auto i = 0; i < NET_NUM_PROTOCOLS; ++i)
     {
-        NET_WriteProtocol(packet, i);
+        NET_WriteProtocol(packet, (net_protocol_t)i);
     }
 }
 

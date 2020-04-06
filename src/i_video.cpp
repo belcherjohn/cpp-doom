@@ -27,7 +27,7 @@
 #include <windows.h>
 #endif
 
-#include "icon.c"
+#include "icon.cpp"
 
 #include "crispy.hpp"
 
@@ -280,7 +280,7 @@ static void SetShowCursor(boolean show)
     {
         // When the cursor is hidden, grab the input.
         // Relative mode implicitly hides the cursor.
-        SDL_SetRelativeMouseMode(!show);
+        SDL_SetRelativeMouseMode(show ? SDL_bool::SDL_FALSE : SDL_bool::SDL_TRUE);
         SDL_GetRelativeMouseState(NULL, NULL);
     }
 }
@@ -1440,7 +1440,7 @@ static void SetVideoMode(void)
     // Force integer scales for resolution-independent rendering.
 
 #if SDL_VERSION_ATLEAST(2, 0, 5)
-    SDL_RenderSetIntegerScale(renderer, integer_scaling);
+    SDL_RenderSetIntegerScale(renderer, integer_scaling ? SDL_bool::SDL_TRUE : SDL_bool::SDL_FALSE);
 #endif
 
     // Blank out the full screen area in case there is any junk in
@@ -1658,9 +1658,9 @@ void I_InitGraphics(void)
     // finally rendered into our window or full screen in I_FinishUpdate().
 
 #ifndef CRISPY_TRUECOLOR
-    I_VideoBuffer = screenbuffer->pixels;
+    I_VideoBuffer = reinterpret_cast<decltype(I_VideoBuffer)>(screenbuffer->pixels);
 #else
-    I_VideoBuffer = argbbuffer->pixels;
+    I_VideoBuffer = reinterpret_cast<decltype(I_VideoBuffer)>(argbbuffer->pixels);
 #endif
     V_RestoreBuffer();
 
@@ -1714,9 +1714,9 @@ void I_ReInitGraphics (int reinit)
 		                                  rmask, gmask, bmask, amask);
 #ifndef CRISPY_TRUECOLOR
 		// [crispy] re-set the framebuffer pointer
-		I_VideoBuffer = screenbuffer->pixels;
+		I_VideoBuffer = reinterpret_cast<decltype(I_VideoBuffer)>(screenbuffer->pixels);
 #else
-		I_VideoBuffer = argbbuffer->pixels;
+		I_VideoBuffer = reinterpret_cast<decltype(I_VideoBuffer)>(argbbuffer->pixels);
 #endif
 		V_RestoreBuffer();
 
@@ -1788,7 +1788,7 @@ void I_ReInitGraphics (int reinit)
 		}
 
 		#if SDL_VERSION_ATLEAST(2, 0, 5)
-		SDL_RenderSetIntegerScale(renderer, integer_scaling);
+		SDL_RenderSetIntegerScale(renderer, integer_scaling != 0 ? SDL_bool::SDL_TRUE : SDL_bool::SDL_FALSE);
 		#endif
 	}
 
@@ -1868,7 +1868,7 @@ void I_RenderReadPixels(byte **data, int *w, int *h, int *p)
 	}
 
 	// [crispy] allocate memory for screenshot image
-	pixels = malloc(rect.h * temp);
+	pixels = new_struct<byte>(rect.h * temp);
 	SDL_RenderReadPixels(renderer, &rect, format->format, pixels, temp);
 
 	*data = pixels;

@@ -393,7 +393,7 @@ static void DoMerge(void)
     int i, n;
 
     // Can't ever have more lumps than we already have
-    newlumps = calloc(numlumps, sizeof(lumpinfo_t *));
+    newlumps = reinterpret_cast<lumpinfo_t**>(calloc(numlumps, sizeof(lumpinfo_t *)));
     num_newlumps = 0;
 
     // Add IWAD lumps
@@ -744,7 +744,7 @@ int W_MergeDump (const char *file)
     }
 
     // [crispy] prepare directory
-    dir = calloc(numlumps, sizeof(*dir));
+    dir = reinterpret_cast<directory_t*>(calloc(numlumps, sizeof(*dir)));
     if (!dir)
     {
 	I_Error("W_MergeDump: Error allocating memory!");
@@ -761,7 +761,7 @@ int W_MergeDump (const char *file)
 	strncpy(dir[i].name, lumpinfo[i]->name, 8);
 
 	// [crispy] avoid flooding Doom's Zone Memory
-	lump_p = I_Realloc(lump_p, lumpinfo[i]->size);
+	lump_p = reinterpret_cast<char*>(I_Realloc(lump_p, lumpinfo[i]->size));
 	W_ReadLump(i, lump_p);
 	fwrite(lump_p, 1, lumpinfo[i]->size, fp);
     }

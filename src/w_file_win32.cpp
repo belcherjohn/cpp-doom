@@ -61,9 +61,9 @@ static void MapFile(win32_wad_file_t *wad, const char *filename)
         return;
     }
 
-    wad->wad.mapped = MapViewOfFile(wad->handle_map,
+    wad->wad.mapped = reinterpret_cast<byte*>(MapViewOfFile(wad->handle_map,
                                     FILE_MAP_COPY,
-                                    0, 0, 0);
+                                    0, 0, 0));
 
     if (wad->wad.mapped == NULL)
     {

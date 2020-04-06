@@ -459,7 +459,7 @@ static void ReleaseVoice(int index)
 
 // Load data to the specified operator
 
-static void LoadOperatorData(int operator, genmidi_op_t *data,
+static void LoadOperatorData(int op, genmidi_op_t *data,
                              boolean max_level, unsigned int *volume)
 {
     int level;
@@ -480,11 +480,11 @@ static void LoadOperatorData(int operator, genmidi_op_t *data,
 
     *volume = level;
 
-    OPL_WriteRegister(OPL_REGS_LEVEL + operator, level);
-    OPL_WriteRegister(OPL_REGS_TREMOLO + operator, data->tremolo);
-    OPL_WriteRegister(OPL_REGS_ATTACK + operator, data->attack);
-    OPL_WriteRegister(OPL_REGS_SUSTAIN + operator, data->sustain);
-    OPL_WriteRegister(OPL_REGS_WAVEFORM + operator, data->waveform);
+    OPL_WriteRegister(OPL_REGS_LEVEL + op, level);
+    OPL_WriteRegister(OPL_REGS_TREMOLO + op, data->tremolo);
+    OPL_WriteRegister(OPL_REGS_ATTACK + op, data->attack);
+    OPL_WriteRegister(OPL_REGS_SUSTAIN + op, data->sustain);
+    OPL_WriteRegister(OPL_REGS_WAVEFORM + op, data->waveform);
 }
 
 // Set the instrument for a particular voice.
@@ -1386,7 +1386,7 @@ static void RestartSong(void *unused)
 
 static void TrackTimerCallback(void *arg)
 {
-    opl_track_data_t *track = arg;
+    opl_track_data_t *track = reinterpret_cast<opl_track_data_t*>(arg);
     midi_event_t *event;
 
     // Get the next event and process it.
@@ -1474,7 +1474,7 @@ static void StartTrack(midi_file_t *file, unsigned int track_num)
 
 // Start playing a mid
 
-static void I_OPL_PlaySong(void *handle, boolean looping)
+static void I_OPL_PlaySong(midi_file_t*handle, boolean looping)
 {
     midi_file_t *file;
     unsigned int i;
@@ -1593,7 +1593,7 @@ static void I_OPL_StopSong(void)
     OPL_Unlock();
 }
 
-static void I_OPL_UnRegisterSong(void *handle)
+static void I_OPL_UnRegisterSong(midi_file_t *handle)
 {
     if (!music_initialized)
     {
@@ -1639,7 +1639,7 @@ static boolean ConvertMus(byte *musdata, int len, char *filename)
     return result;
 }
 
-static void *I_OPL_RegisterSong(void *data, int len)
+static void *I_OPL_RegisterSong(byte *data, int len)
 {
     midi_file_t *result;
     char *filename;

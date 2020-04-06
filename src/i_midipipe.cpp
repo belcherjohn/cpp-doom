@@ -32,7 +32,7 @@
 #include "m_misc.hpp"
 #include "net_packet.hpp"
 
-#include "../midiproc/proto.h"
+#include "../midiproc/proto.hpp"
 
 #if defined(_DEBUG)
 #define DEBUGOUT(s) puts(s)

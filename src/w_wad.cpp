@@ -198,7 +198,7 @@ wad_file_t *W_AddFile (const char *filename)
     }
 
     // Increase size of numlumps array to accomodate the new file.
-    filelumps = calloc(numfilelumps, sizeof(lumpinfo_t));
+    filelumps = reinterpret_cast<lumpinfo_t*>(calloc(numfilelumps, sizeof(lumpinfo_t)));
     if (filelumps == NULL)
     {
         W_CloseFile(wad_file);
@@ -207,7 +207,7 @@ wad_file_t *W_AddFile (const char *filename)
 
     startlump = numlumps;
     numlumps += numfilelumps;
-    lumpinfo = I_Realloc(lumpinfo, numlumps * sizeof(lumpinfo_t *));
+    lumpinfo = reinterpret_cast<lumpinfo_t*>(I_Realloc(lumpinfo, numlumps * sizeof(lumpinfo_t *)));
     filerover = fileinfo;
 
     for (i = startlump; i < numlumps; ++i)
@@ -423,16 +423,16 @@ void *W_CacheLumpNum(lumpindex_t lumpnum, int tag)
     {
         // Already cached, so just switch the zone tag.
 
-        result = lump->cache;
+        result = reinterpret_cast<byte*>(lump->cache);
         Z_ChangeTag(lump->cache, tag);
     }
     else
     {
         // Not yet loaded, so load it now
 
-        lump->cache = Z_Malloc<decltype(*cache)>(W_LumpLength(lumpnum), tag, &lump->cache);
-	W_ReadLump (lumpnum, lump->cache);
-        result = lump->cache;
+        lump->cache = Z_Malloc<byte>(W_LumpLength(lumpnum), tag, &lump->cache);
+	    W_ReadLump (lumpnum, lump->cache);
+        result = reinterpret_cast<byte*>(lump->cache);
     }
 	
     return result;
@@ -667,7 +667,7 @@ int W_LumpDump (const char *lumpname)
     }
     free(filename);
 
-    lump_p = malloc(lumpinfo[i]->size);
+    lump_p = reinterpret_cast<char*>(malloc(lumpinfo[i]->size));
     W_ReadLump(i, lump_p);
     fwrite(lump_p, 1, lumpinfo[i]->size, fp);
     free(lump_p);

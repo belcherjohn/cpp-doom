@@ -335,18 +335,15 @@ static boolean ValidArgumentReplacement(format_arg_t original,
 
 static boolean ValidFormatReplacement(const char *original, const char *replacement)
 {
-    const char *rover1;
-    const char *rover2;
-    int argtype1, argtype2;
-
     // Check each argument in turn and compare types.
 
-    rover1 = original; rover2 = replacement;
+    auto rover1 = original;
+    auto rover2 = replacement;
 
     for (;;)
     {
-        argtype1 = NextFormatArgument(&rover1);
-        argtype2 = NextFormatArgument(&rover2);
+        const auto argtype1 = NextFormatArgument(&rover1);
+        const auto argtype2 = NextFormatArgument(&rover2);
 
         if (argtype2 == FORMAT_ARG_INVALID)
         {

@@ -721,12 +721,9 @@ static void TXT_FileSelectDestructor(TXT_UNCAST_ARG(fileselect))
 
 static int DoSelectFile(txt_fileselect_t *fileselect)
 {
-    char *path;
-    char **var;
-
     if (TXT_CanSelectFiles())
     {
-        path = TXT_SelectFile(fileselect->prompt,
+        auto path = TXT_SelectFile(fileselect->prompt,
                               fileselect->extensions);
 
         // Update inputbox variable.
@@ -738,7 +735,7 @@ static int DoSelectFile(txt_fileselect_t *fileselect)
             path = strdup("");
         }
 
-        var = fileselect->inputbox->value;
+        auto var = reinterpret_cast<char**>(fileselect->inputbox->value);
         free(*var);
         *var = path;
         return 1;

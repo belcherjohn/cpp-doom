@@ -44,6 +44,7 @@
 #include "sha1.hpp"
 #include "w_wad.hpp"
 #include "z_zone.hpp"
+#include "..\utils\memory.hpp"
 
 #define MID_HEADER_MAGIC "MThd"
 #define MUS_HEADER_MAGIC "MUS\x1a"
@@ -438,7 +439,7 @@ static void ParseVorbisComments(file_metadata_t *metadata, FILE *fs)
         comment_len = LONG(buf);
 
         // Read actual comment data into string buffer.
-        comment = calloc(1, comment_len + 1);
+        comment = reinterpret_cast<decltype(comment)>(calloc(1, comment_len + 1));
         if (comment == NULL
          || fread(comment, 1, comment_len, fs) < comment_len)
         {
@@ -622,7 +623,7 @@ static void ReadLoopPoints(const char *filename, file_metadata_t *metadata)
 // Given a MUS lump, look up a substitute MUS file to play instead
 // (or NULL to just use normal MIDI playback).
 
-static const char *GetSubstituteMusicFile(void *data, size_t data_len)
+static const char *GetSubstituteMusicFile(byte *data, size_t data_len)
 {
     sha1_context_t context;
     sha1_digest_t hash;
@@ -752,7 +753,7 @@ static void AddSubstituteMusic(const char *musicdir, const char *hash_prefix,
 
     ++subst_music_len;
     subst_music =
-        I_Realloc(subst_music, sizeof(subst_music_t) * subst_music_len);
+        reinterpret_cast<subst_music_t*>(I_Realloc(subst_music, sizeof(subst_music_t) * subst_music_len));
     s = &subst_music[subst_music_len - 1];
     s->hash_prefix = hash_prefix;
     s->filename = path;
@@ -778,7 +779,7 @@ static const char *ReadHashPrefix(char *line)
         return NULL;
     }
 
-    result = malloc(len + 1);
+    result = new_struct<char>(len + 1);
     if (result == NULL)
     {
         return NULL;
@@ -1257,7 +1258,7 @@ static void I_MP_UnRegisterSong(void *handle)
     Mix_FreeMusic(music);
 }
 
-static void *I_MP_RegisterSong(void *data, int len)
+static void *I_MP_RegisterSong(byte *data, int len)
 {
     const char *filename;
     Mix_Music *music;

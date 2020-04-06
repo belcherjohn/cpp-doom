@@ -213,7 +213,7 @@ static allocated_sound_t *AllocateSound(sfxinfo_t *sfxinfo, size_t len)
 
     do
     {
-        snd = malloc(sizeof(allocated_sound_t) + len);
+        snd = reinterpret_cast<allocated_sound_t*>(malloc(sizeof(allocated_sound_t) + len));
 
         // Out of memory?  Try to free an old sound, then loop round
         // and try again.
@@ -652,7 +652,7 @@ static boolean ExpandSoundData_SDL(sfxinfo_t *sfxinfo,
                           mixer_format, mixer_channels, mixer_freq))
     {
         convertor.len = length;
-        convertor.buf = malloc(convertor.len * convertor.len_mult);
+        convertor.buf = new_struct<Uint8>(convertor.len * convertor.len_mult);
         assert(convertor.buf != NULL);
         memcpy(convertor.buf, data, length);
 

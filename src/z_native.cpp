@@ -268,7 +268,7 @@ void * Z_Malloc_impl(int size, int tag, void *user)
     // Hook into the linked list for this tag type
 
     newblock->id = ZONEID;
-    newblock->user = user;
+    newblock->user = reinterpret_cast<void**>(user);
     newblock->size = size;
 
     Z_InsertBlock(newblock);

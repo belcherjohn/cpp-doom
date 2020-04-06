@@ -332,9 +332,8 @@ net_addr_t *NET_SDL_ResolveAddress(const char *address)
     char *addr_hostname;
     int addr_port;
     int result;
-    char *colon;
 
-    colon = strchr(address, ':');
+    const auto colon = strchr(address, ':');
 
     addr_hostname = M_StringDuplicate(address);
     if (colon != NULL)

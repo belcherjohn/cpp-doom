@@ -111,7 +111,7 @@ static byte *AutoAllocMemory(int *size, int default_ram, int min_ram)
 
         *size = default_ram * 1024 * 1024;
 
-        zonemem = malloc(*size);
+        zonemem = new_struct<byte>(*size);
 
         // Failed to allocate?  Reduce zone size until we reach a size
         // that is acceptable.

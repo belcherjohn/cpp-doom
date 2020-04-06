@@ -19,7 +19,7 @@
 extern "C" {
 #endif
 
-#include "../src/doomkeys.h"
+#include "../src/doomkeys.hpp"
 #include "txt_main.hpp"
 
 #include "txt_button.hpp"

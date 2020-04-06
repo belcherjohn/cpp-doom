@@ -49,7 +49,7 @@ static struct
 
 // Check that a gamemode+gamemission received over the network is valid.
 
-boolean D_ValidGameMode(GameMission_t mission, GameMode_t mode)
+boolean D_ValidGameMode(int mission, int mode)
 {
     int i;
 
@@ -64,7 +64,7 @@ boolean D_ValidGameMode(GameMission_t mission, GameMode_t mode)
     return false;
 }
 
-boolean D_ValidEpisodeMap(GameMission_t mission, GameMode_t mode,
+boolean D_ValidEpisodeMap(int mission, int mode,
                           int episode, int map)
 {
     int i;
@@ -138,7 +138,7 @@ static struct {
     { strife,   exe_strife_1_31 },
 };
 
-boolean D_ValidGameVersion(GameMission_t mission, GameVersion_t version)
+boolean D_ValidGameVersion(int mission, int version)
 {
     int i;
 

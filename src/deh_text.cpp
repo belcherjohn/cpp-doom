@@ -26,6 +26,7 @@
 #include "deh_defs.hpp"
 #include "deh_io.hpp"
 #include "deh_main.hpp"
+#include "..\utils\memory.hpp"
 
 // [crispy] support INCLUDE NOTEXT directive in BEX files
 boolean bex_notext = false;
@@ -72,8 +73,8 @@ static void *DEH_TextStart(deh_context_t *context, char *line)
         return NULL;
     }
 
-    from_text = malloc(fromlen + 1);
-    to_text = malloc(tolen + 1);
+    from_text = new_struct<char>(fromlen + 1);
+    to_text = new_struct<char>(tolen + 1);
 
     // read in the "from" text
 
